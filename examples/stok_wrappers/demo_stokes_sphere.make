@@ -1,4 +1,4 @@
-EXEC = int2-stok-trac-iter-example
+EXEC = int2-stok
 #HOST = gcc
 HOST = gcc-openmp
 #HOST = intel
