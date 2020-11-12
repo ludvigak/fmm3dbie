@@ -1649,7 +1649,7 @@ end subroutine fker_DFIE
 		&pot_aux(1:ntarg),pot_aux(ntarg+1:2*ntarg),pot_aux(2*ntarg+1:3*ntarg),pot_aux(3*ntarg+1:4*ntarg),&
 		&pot_aux(4*ntarg+1:5*ntarg),pot_aux(5*ntarg+1:6*ntarg))
 		
-		call get_thresh(srcover,ns,targs,ntarg,thresh)
+		call get_fmm_thresh(12,ns,srcover,ndtarg,ntarg,targs,thresh)
 
 		call cpu_time(t1)
 !C$      t1 = omp_get_wtime()
