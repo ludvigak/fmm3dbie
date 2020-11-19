@@ -80,7 +80,9 @@ c
       allocate(targs(3,npts))
       ifplot = 0
 
-
+c
+c  get geometry info
+c
 
       call setup_geom(igeomtype,norder,npatches,ipars, 
      1       srcvals,srccoefs,ifplot,fname)
@@ -96,6 +98,10 @@ c
 
       ixyzs(npatches+1) = 1+npols*npatches
       allocate(wts(npts))
+
+c
+c get smooth quadrature weights
+c
       call get_qwts(npatches,norders,ixyzs,iptype,npts,srcvals,wts)
 c
 c
@@ -128,7 +134,9 @@ c
      1        + stracmat(3,3)*sigout(3)
          
       enddo
-
+c
+c  information for on surface targets 
+c 
       allocate(ipatch_id(npts),uvs_targ(2,npts))
       call get_patch_id_uvs(npatches,norders,ixyzs,iptype,npts,
      1  ipatch_id,uvs_targ)
@@ -136,6 +144,11 @@ c
 
       iptype_avg = floor(sum(iptype)/(npatches+0.0d0))
       norder_avg = floor(sum(norders)/(npatches+0.0d0))
+
+
+c
+c
+c
 
       call get_rfacs(norder_avg,iptype_avg,rfac,rfac0)
 
@@ -161,9 +174,17 @@ c
       call findnear(cms,npatches,rad_near,12,srcvals,npts,row_ptr, 
      1        col_ind)
 
+c
+c
+c
+
       allocate(iquad(nnz+1)) 
       call get_iquad_rsc(npatches,ixyzs,npts,nnz,row_ptr,col_ind,
      1         iquad)
+
+c
+c
+c
 
       ikerorder = 0 
 
